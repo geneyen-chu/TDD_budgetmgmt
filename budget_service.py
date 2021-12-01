@@ -9,9 +9,11 @@ class BudgetOjbect:
         self.budget = budget
 class BudgetService:
     def __init__(self) -> None:
-        self.budget_list = self.get_all_budget()
+        # self.budget_list = self.get_all_budget()
+        pass
 
     def query(self, s_date, e_date):
+        self.budget_list = self.get_all_budget()
         if s_date > e_date:
             return 0
 
@@ -30,10 +32,10 @@ class BudgetService:
                 rest_day = (month_days-s_date.day+1)
             else:
                 rest_day = (e_date.day)
-            print("rest_day", rest_day)
-            print("daily_budget", daily_budget)
+            print("---rest_day", rest_day)
+            print(">>>daily_budget", daily_budget)
 
-            print('total', total)
+            print('***total', total)
             total += rest_day*daily_budget
             s_date = s_date + timedelta(days=month_days)
         
@@ -41,12 +43,15 @@ class BudgetService:
     
     def get_monthly_budget(self, date):                
         for item in self.budget_list:
+            print("item", item)
             if item.date == date.strftime("%Y%m"):
+                print("item.budget", item.budget)
                 return item.budget
         return 0
 
     def get_all_budget(self):
-        return [BudgetOjbect("202104", 6000)]      
+        return []
+           
 
 if __name__ == __name__:
     b = BudgetService()

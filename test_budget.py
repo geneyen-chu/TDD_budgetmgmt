@@ -39,7 +39,7 @@ class Test_budgetCase(unittest.TestCase):
         self.budget_service.get_all_budget = mock.Mock(return_value=fake_budget_list)
         self.result = self.budget_service.get_all_budget.return_value
 
-        test_result = self.budget_service.query(date(2021, 5, 1), date(2022, 6, 30))
+        test_result = self.budget_service.query(date(2021, 5, 1), date(2021, 6, 30))
         self.assertEqual(test_result, 3100)
 
     def test_query_with_partial_month_should_return_correct_budget(self):
@@ -48,7 +48,7 @@ class Test_budgetCase(unittest.TestCase):
         
         self.budget_service.get_all_budget = mock.Mock(return_value=fake_budget_list)
         self.result = self.budget_service.get_all_budget.return_value
-        test_result = self.budget_service.query(date(2021, 4, 31), date(2022, 5, 2))
+        test_result = self.budget_service.query(date(2021, 4, 30), date(2022, 5, 2))
         self.assertEqual(test_result, 400)
 
     def test_query_with_non_existed_month_should_return_zero_budget(self):
