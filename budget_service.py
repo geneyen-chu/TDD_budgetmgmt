@@ -18,11 +18,6 @@ class BudgetService:
         if s_date > e_date:
             return 0
 
-        if s_date.strftime("%Y%m") == e_date.month:
-            month_days = calendar.monthrange(s_date.year, s_date.month)[1]
-            daily_budget = self.get_monthly_budget(s_date) / month_days
-            return daily_budget*(e_date.day-s_date.day+1)
-
         total = 0
         while s_date.strftime("%Y%m") <= e_date.strftime("%Y%m"):                        
             month_days = calendar.monthrange(s_date.year, s_date.month)[1]
@@ -31,19 +26,21 @@ class BudgetService:
             if s_date.strftime("%Y%m") < e_date.strftime("%Y%m"):                
                 rest_day = (month_days-s_date.day+1)
             else:
-                rest_day = (e_date.day)
-            logging.debug("---rest_day {}".format(rest_day))
-            logging.debug(">>>daily_budget {}".format(daily_budget))
-            logging.debug('***total {}'.format(total))
+                rest_day = (e_date.day)            
             total += rest_day*daily_budget
             s_date = s_date + timedelta(month_days-s_date.day+1)
+
+            logging.debug("*"*20)
+            logging.debug("rest_day {}".format(rest_day))
+            logging.debug("daily_budget {}".format(daily_budget))
+            logging.debug('total {}'.format(total))
+            logging.debug("*"*20)
         
         return total
     
     def get_monthly_budget(self, date):                
-        for item in self.budget_list:
-            logging.debug("item {}".format(item))
-            if item.date == date.strftime("%Y%m"):                
+        for item in self.budget_list:            
+            if item.date == date.strftime("%Y%m"):
                 return item.budget
         return 0
 
@@ -58,5 +55,5 @@ if __name__ == __name__:
     logging.basicConfig()
     logging.getLogger().setLevel(logging.DEBUG)
     b = BudgetService()
-    #print(b.query(date(2021, 4, 21), date(2021, 6, 30)))
+    # print(b.query(date(2021, 4, 21), date(2021, 6, 30)))
     
