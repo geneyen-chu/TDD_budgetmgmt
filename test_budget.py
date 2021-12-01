@@ -1,3 +1,4 @@
+import logging
 import unittest
 from unittest import mock
 from datetime import date
@@ -8,7 +9,7 @@ from budget_service import BudgetOjbect
 
 class Test_budgetCase(unittest.TestCase):
     def setUp(self):
-        self.budget_service = BudgetService()
+        self.budget_service = BudgetService()                
         self.args = (3, 2)
 
     def tearDown(self):
