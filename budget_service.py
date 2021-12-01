@@ -18,17 +18,17 @@ class BudgetService:
         if s_date > e_date:
             return 0
 
-        if s_date.month == e_date.month:
+        if s_date.strftime("%Y%m") == e_date.month:
             month_days = calendar.monthrange(s_date.year, s_date.month)[1]
             daily_budget = self.get_monthly_budget(s_date) / month_days
             return daily_budget*(e_date.day-s_date.day+1)
 
-        total = 0        
+        total = 0
         while s_date.strftime("%Y%m") <= e_date.strftime("%Y%m"):                        
             month_days = calendar.monthrange(s_date.year, s_date.month)[1]
             daily_budget = self.get_monthly_budget(s_date) / month_days
             
-            if s_date.month < e_date.month:                
+            if s_date.strftime("%Y%m") < e_date.strftime("%Y%m"):                
                 rest_day = (month_days-s_date.day+1)
             else:
                 rest_day = (e_date.day)
