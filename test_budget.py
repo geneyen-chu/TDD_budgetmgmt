@@ -67,9 +67,5 @@ class Test_budgetCase(unittest.TestCase):
         test_result = self.budget_service.query(date(2021, 4, 16), date(2022, 4, 17))
         self.assertEqual(test_result, 0)        
 
-    def test_queryBudget(self):
-        self.assertEqual(True, True)
-
-
 if __name__ == '__main__':
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=1)

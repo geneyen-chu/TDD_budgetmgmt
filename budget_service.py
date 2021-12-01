@@ -48,14 +48,15 @@ class BudgetService:
         return 0
 
     def get_all_budget(self):
-        return [BudgetOjbect("202104", 6000),
-                BudgetOjbect("202105", 3100),
-                BudgetOjbect("202106", 3000)] 
+        return []
+        # return [BudgetOjbect("202104", 6000),
+        #         BudgetOjbect("202105", 3100),
+        #         BudgetOjbect("202106", 3000)] 
            
 
 if __name__ == __name__:
     logging.basicConfig()
     logging.getLogger().setLevel(logging.DEBUG)
     b = BudgetService()
-    print(b.query(date(2021, 4, 21), date(2021, 6, 30)))
+    #print(b.query(date(2021, 4, 21), date(2021, 6, 30)))
     
