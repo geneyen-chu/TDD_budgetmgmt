@@ -9,8 +9,9 @@ from budget_service import BudgetOjbect
 
 class Test_budgetCase(unittest.TestCase):
     def setUp(self):
-        self.budget_service = BudgetService()                
-        self.args = (3, 2)
+        logging.basicConfig()
+        logging.getLogger().setLevel(logging.INFO)
+        self.budget_service = BudgetService()                        
 
     def tearDown(self):
         self.args = None
