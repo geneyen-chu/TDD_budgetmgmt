@@ -46,8 +46,7 @@ class BudgetService:
         return 0
 
     def get_all_budget(self):
-        return [BudgetOjbect("202105", 3100),
-                BudgetOjbect("202106", 0)]        
+        return [BudgetOjbect("202104", 6000)]      
 
 if __name__ == __name__:
     b = BudgetService()
